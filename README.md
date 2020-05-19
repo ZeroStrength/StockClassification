@@ -1,1 +1,4 @@
 # StockClassification
+
+### K-means
+- MACD
