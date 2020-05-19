@@ -2,12 +2,12 @@
 
 ### K-means
 - MACD
+- others
 
-
-### Install
+### Setup
 - (Python)
   - pip install -r requirements.txt
 - (Anaconda)
-  - environment.yml
+  - conda create -n stockc environment.yml
   - activate stockc
 - python test.py
