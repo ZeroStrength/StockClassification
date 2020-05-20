@@ -7,7 +7,7 @@
 ### Setup
 - (Python)
   - pip install -r requirements.txt
-- (Anaconda)
-  - conda create -n stockc environment.yml
-  - activate stockc
+- (Docker)
+  - docker pull tensorflow/tensorflow
+  - docker run -it --rm tensorflow/tensorflow bash
 - python test.py
