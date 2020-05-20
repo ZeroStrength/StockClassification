@@ -48,6 +48,6 @@ class crawler():
         self.data.to_csv(filename)
 
 if __name__ == '__main__':
-    c = crawler("KOSDAQ", 100)
+    c = crawler("KOSPI", 30)
     c.get()
-    c.save("data/kosdaq_100.csv")
+    c.save("data/kospi_50.csv")

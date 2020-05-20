@@ -4,3 +4,4 @@ seaborn==0.10.1
 sklearn
 pandas_datareader==0.8.1
 bs4
+pykrx
