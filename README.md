@@ -1,10 +1,13 @@
-# StockClassification
+# Stock Classification
 
 ### K-means
 - MACD, RSI
   - sklearn kmeans
   - kospi 100 cluster#4 result
 ![Alt text](img/sklearn_kmeans_kospi_cluster4.png?raw=true "sklearn kmeans result")
+
+### Others
+
 
 ### Setup
 - (Python)
