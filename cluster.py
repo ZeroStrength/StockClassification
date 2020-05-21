@@ -28,7 +28,9 @@ def fnRSI(m_Df, m_N):
 # 1. Get array data (KOSPI Top 100)
 # 1.1. Get code list
 code_list = pd.read_csv('data/kospi_100.csv')
+name_list = list(code_list["name"])
 code_list = list(code_list["code"])
+
 
 def addZeroToCode(code):
     code = str(code)
@@ -40,17 +42,43 @@ for code in code_list:
     code = addZeroToCode( code )
     p = stock.get_market_ohlcv_by_date("20200401", "20200520", code)
     macd = fnMACD( p ).iloc[-1][-2]
-    rsi = fnRSI( p,12 ).iloc[-1][3]
+    rsi = fnRSI( p, 12 ).iloc[-1][3]
 
     A.append( [macd,rsi] )
 
 A = np.array(A)
 
 # Calculate MACD 5 (X), MACD 20 (Y)
-kmeans = KMeans(n_clusters=8, random_state=0).fit(A)
+kmeans = KMeans(n_clusters=4, random_state=0).fit(A)
 
-print( kmeans.labels_ )
-print( kmeans.predict([[0, 0], [12, 3]]) )
-print( kmeans.cluster_centers_ )
+labels = kmeans.labels_
+
+# match labels with stock name
+
+result = {}
+
+for i in range(len( labels) ):
+    label = str(labels[i])
+
+    if label in result.keys():
+        result[label].append( name_list[i] )
+    else:
+        result[label] = [name_list[i]]
+
+w = open('data/cluster_result.txt', 'w')
+
+for key in result.keys():
+    print("===" + key + "===")
+    print(result[key])
+    print()
+
+    w.write(key+'\n')
+    w.write(str(result[key])+'\n\n')
+
+w.close()
+
+
+#print( kmeans.predict([[0, 0], [12, 3]]) )
+#print( kmeans.cluster_centers_ )
 
 
